@@ -5,6 +5,7 @@ import { useSnackbar } from "notistack";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { auto } from "@cloudinary/url-gen/actions/resize";
 import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import {apiUrl} from '../api/server.js'
 
 const CreateBooks = () => {
   const [title, setTitle] = useState("");
@@ -60,7 +61,7 @@ const CreateBooks = () => {
     };
 
     try {
-      await axios.post("http://localhost:2800/books", data, {
+      await axios.post(`${apiUrl}/books`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

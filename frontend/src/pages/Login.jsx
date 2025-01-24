@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { apiUrl } from "../api/server";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ const Login = () => {
   const { enqueueSnackbar } = useSnackbar();
   const handleLogin = () => {
     axios
-      .post("http://localhost:2800/user/login", { username, password })
+      .post(`${apiUrl}/user/login`, { username, password })
       .then((response) => {
         const {token, username } = response.data;
         console.log("Username:", username);

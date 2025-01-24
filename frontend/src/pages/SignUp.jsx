@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { apiUrl } from "../api/server";
 
 const  SignUp= () => {
   const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ const  SignUp= () => {
   const { enqueueSnackbar } = useSnackbar();
   const handleSignUp = () => {
     axios
-      .post("http://localhost:2800/user/signup", { username, email, password })
+      .post(`${apiUrl}/user/signup`, { username, email, password })
       .then(() => {
         enqueueSnackbar("Sign Up successful", { variant: "success" });
         navigate("/");

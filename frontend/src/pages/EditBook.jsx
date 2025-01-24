@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import BackButton from "../components/BackButton";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { apiUrl } from "../api/server";
 
 const EditBook = () => {
   const [title, setTitle] = useState("");
@@ -18,7 +19,7 @@ const EditBook = () => {
         return;
       }
     axios
-      .get(`http://localhost:2800/books/${id}`, {
+      .get(`${apiUrl}/books/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Add token in the Authorization header
         },
@@ -46,7 +47,7 @@ const EditBook = () => {
       publishYear,
     };
     axios
-      .put(`http://localhost:2800/books/${id}`, data, {
+      .put(`${apiUrl}/books/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

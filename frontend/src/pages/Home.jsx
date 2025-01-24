@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineAddBox } from "react-icons/md";
 import BooksTable from "../components/home/BooksTable";
+import { apiUrl } from "../api/server";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -23,7 +24,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2800/books", {
+      .get(`${apiUrl}/books`, {
         headers: {
           Authorization: `Bearer ${token}`, // Send the token
         },

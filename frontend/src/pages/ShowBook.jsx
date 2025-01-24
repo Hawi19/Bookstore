@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
+import { apiUrl } from "../api/server";
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -15,7 +16,7 @@ const ShowBook = () => {
       return;
     }
     axios
-      .get(`http://localhost:2800/books/${id}`, {
+      .get(`${apiUrl}/books/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

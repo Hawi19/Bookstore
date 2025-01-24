@@ -2,6 +2,7 @@ import React from "react";
 import BackButton from "../components/BackButton";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { apiUrl } from "../api/server";
 
 const DeleteBook = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     const token = localStorage.getItem("token");
     axios
-      .delete(`http://localhost:2800/books/${id}`, {
+      .delete(` ${apiUrl}/books/${id}`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
