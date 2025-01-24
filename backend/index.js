@@ -5,6 +5,7 @@ import userRoute from './routes/userRoute.js'
 import booksRoute from "./routes/booksRoute.js";
 import cors from "cors";
 
+
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
@@ -13,6 +14,13 @@ app.use(express.json());
 //Middleware for handling CORS POLICY
 //Allow All Origins qith difault of cors(*)
 app.use(cors());
+let corsOptions = {
+  origin: [
+    "https://bookstore-frontend-ddb5.onrender.com/",
+    "http://localhost:5173",
+  ],
+};
+app.use(cors(corsOptions));
 app.get("/", (request, response) => {
   console.log(request);
   return response.status(234).send("Welcome To MERN Stack Tutorial");
